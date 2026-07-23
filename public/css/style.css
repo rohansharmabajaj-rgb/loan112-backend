@@ -1,0 +1,236 @@
+.serviceeBoxxx .service-icon {
+  background: #032e63 !important;
+}
+
+.serviceeBoxxx .title {
+  color: #032e63 !important;
+}
+
+.serviceBoxx .service-icon {
+  color: #1c6bad !important;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.main_journey_login_panel .terms_service a {
+  color: #337ab7 !important;
+}
+
+.applyt_btn:hover {
+  color: #fff !important;
+}
+
+.demo .nav-stacked .panel-default .panel-body p {
+  padding: 0 20px 0 0 !important;
+}
+
+.btn_home {
+  color: #fff;
+  display: inline-block;
+  padding: 11px 34px !important;
+  border-radius: 8px !important;
+  font-size: 17px !important;
+  background: #009ad3 !important;
+  margin-top: 17px !important;
+  font-weight: bold !important;
+}
+
+.main_journey_panel .documents-upload .btn_upload,
+.main_journey_panel #residence_proof_upload .btn_upload {
+  color: #fff;
+  display: inline-block;
+  padding: 11px 34px !important;
+  border-radius: 8px !important;
+  font-size: 17px !important;
+  background: #2b3c74 !important;
+  border: 1px solid #2b3c74 !important;
+  margin-top: 17px !important;
+  font-weight: bold !important;
+}
+
+.contact-information a:hover {
+  color: #009ad3 !important;
+}
+
+.main_journey_panel h2 span {
+  color: #009ad3 !important;
+}
+
+#loan_quote .form-group label {
+  background-color: #337ab7 !important;
+}
+
+#loan_quote .principal_cal li p:last-child {
+  background-color: #337ab7 !important;
+}
+
+.main_journey_panel .next_btn {
+  margin-right: 6px !important;
+}
+
+.reject-btn {
+  color: #ffffff !important;
+}
+
+.next_btn {
+  margin-bottom: 10px !important;
+}
+
+.main_journey_panel .form-group {
+  z-index: 0 !important;
+}
+
+.main_journey_panel .button .next_btn {
+  background: #2b3c74 !important;
+}
+
+#residence_proof_upload .btn {
+  background-color: #2b3c74 !important;
+}
+
+#residence_proof_upload .btn input[type="file"] {
+  background-color: #2b3c74 !important;
+}
+
+#residence_proof_upload .select_option_bill {
+  background-color: #2b3c74 !important;
+}
+
+.thank_u_mdl {
+  background-color: #1c6bad !important;
+}
+
+.thank_you .btn_upload {
+  background: #2b3c74 !important;
+  padding: 10px 20px !important;
+  border-radius: 9px;
+  border: 1px solid #2b3c74 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.skip-button .btn_home {
+  color: #fff !important;
+  display: inline-block;
+  padding: 11px 25px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  background: #2b3c74 !important;
+  margin-top: 17px !important;
+  font-weight: bold !important;
+  border-color: #2b3c74 !important;
+}
+
+@media (max-width: 1200px) {
+  #profile-data .headings_tabs .tabs-left > li > a,
+  #profile-data .headings_tabs .tabs-left > li > a:hover,
+  #profile-data .headings_tabs .tabs-left > li > a:focus {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .d-md-none {
+    display: none !important;
+  }
+
+  /* 21-10 */
+  .dashboard_content .apply_nw {
+    margin-top: 20px !important;
+  }
+
+  /* 17-10 */
+  .serviceBoxx {
+    position: static !important;
+    display: block;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 20px;
+    padding-left: 0px !important;
+  }
+
+  .serviceBoxx .title {
+    font-size: 14px !important;
+    text-align: center;
+  }
+
+  .serviceBoxx .description {
+    font-size: 11px !important;
+    text-align: center !important;
+  }
+
+  .serviceBoxx .service-icon {
+    margin-bottom: 20px !important;
+    position: static !important;
+    margin: 0 auto 15px !important;
+  }
+
+  /* already in css */
+  .serviceBox {
+    height: 375px !important;
+  }
+
+  .serviceBox .description {
+    font-size: 12px !important;
+    margin-bottom: 0px !important;
+    line-height: 18px;
+    font-weight: 600 !important;
+  }
+
+  .serviceBox .title {
+    font-size: 15px;
+  }
+
+  .demo .nav-stacked .panel-default .panel-body p {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceBox .title {
+    font-size: 18px !important;
+  }
+
+  .serviceBox .description {
+    font-size: 14px !important;
+    line-height: 23px !important;
+  }
+
+  .demo .nav-stacked .panel-default .panel-body p {
+    padding: 0px 30px 0 0 !important;
+  }
+
+  .dashboard_content .main_journey_panel .demo .panel-default h4 span {
+    font-size: 14px !important;
+  }
+
+  .dashboard_content .main_journey_panel .demo .panel-default h4 {
+    margin-top: 0px !important;
+  }
+
+  #profile-data .headings_tabs .tabs-left > li > a,
+  #profile-data .headings_tabs .tabs-left > li > a:hover,
+  #profile-data .headings_tabs .tabs-left > li > a:focus {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .serviceBox {
+    height: 385px !important;
+  }
+
+  #profile-data .headings_tabs li {
+    width: 100% !important;
+  }
+
+  #profile-data .headings_tabs .tabs-left > li > a,
+  #profile-data .headings_tabs .tabs-left > li > a:hover,
+  #profile-data .headings_tabs .tabs-left > li > a:focus {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  #profile-data .details_tabs .content_details {
+    padding: 10px 0px;
+  }
+}
