@@ -1,0 +1,797 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" type="text/css" href="https://www.loan112.com/public/loan112/favicon.png">
+    <link rel="canonical" href="user-report.html" />
+    <title>Your Loan Report | Loan112</title>
+    <link href="https://www.loan112.com/public/css/bootstrap.min.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/animate.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/my-css.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/bootsnav.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/style.css?v=3.8" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: 'Manrope', sans-serif !important; margin: 0; padding: 0; }
+        .dashboard_content { width: 78%; }
+        section > .dashboard_nav { padding-top: 0 !important; top: 0 !important; }
+
+        .report-header {
+            background: linear-gradient(135deg, #1e2754 0%, #0c93cd 100%);
+            border-radius: 14px;
+            padding: 30px 20px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .report-header h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+        .report-header p { font-size: 14px; opacity: 0.9; margin: 0; }
+        .status-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .status-approved { background: #22c55e; color: #fff; animation: pulse 2s infinite; }
+        .status-pending { background: #f59e0b; color: #fff; }
+        .status-rejected { background: #ef4444; color: #fff; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+        .amount-card {
+            background: linear-gradient(135deg, #1e2754, #2a3972);
+            border-radius: 14px;
+            padding: 25px 20px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .amount-card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; margin: 0 0 8px; }
+        .amount-card .amount { font-size: 32px; font-weight: 800; }
+        .eligibility-box {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 14px;
+            padding: 20px 15px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .eligibility-box h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; margin: 0 0 8px; }
+        .eligibility-box .percent { font-size: 28px; font-weight: 800; }
+
+        .eligibility-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 2px 1px 10px 2px rgba(0,0,0,0.06);
+            margin-bottom: 15px;
+        }
+        .eligibility-circle {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            margin: 10px auto;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(34,197,94,0.3);
+        }
+        .eligibility-circle .percent { font-size: 28px; font-weight: 800; }
+        .eligibility-circle .label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .report-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 2px 1px 10px 2px rgba(0,0,0,0.06);
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-size: 15px; font-weight: 800; color: #1e2754;
+            margin-bottom: 15px; padding-bottom: 8px;
+            border-bottom: 3px solid #0c93cd; display: inline-block;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .info-item {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 12px 15px;
+            border-left: 3px solid #0c93cd;
+        }
+        .info-item label {
+            font-size: 10px; color: #64748b;
+            text-transform: uppercase; letter-spacing: 1px;
+            font-weight: 600; margin-bottom: 3px; display: block;
+        }
+        .info-item span { font-size: 15px; color: #1e2754; font-weight: 700; }
+        .no-data { text-align: center; padding: 40px 20px; color: #64748b; }
+        .no-data i { font-size: 50px; color: #cbd5e1; margin-bottom: 15px; }
+
+        .repayment-history-item {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #0c93cd;
+        }
+        .repayment-history-item.approved { border-left-color: #22c55e; }
+        .repayment-history-item.rejected { border-left-color: #ef4444; }
+        .repayment-history-item.pending { border-left-color: #f59e0b; }
+        .repayment-history-item .rh-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .repayment-history-item .rh-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+        .repayment-history-item .rh-value { font-size: 14px; font-weight: 700; color: #1e2754; }
+        .repayment-history-item .rh-status {
+            display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
+        }
+        .rh-status-approved { background: #dcfce7; color: #16a34a; }
+        .rh-status-pending { background: #fef3c7; color: #d97706; }
+        .rh-status-rejected { background: #fee2e2; color: #dc2626; }
+
+        .admin-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 99999; justify-content: center; align-items: center; }
+        .admin-overlay.show { display: flex; }
+        .edit-modal { background: #fff; border-radius: 16px; padding: 30px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: popIn 0.3s ease; }
+        .edit-modal h2 { font-size: 20px; font-weight: 800; color: #1e2754; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #0c93cd; }
+        .edit-modal .btn-row { display: flex; gap: 10px; margin-top: 18px; }
+        .edit-modal .btn-cancel { background: #e2e8f0; color: #475569; border: none; padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; flex: 1; }
+        @keyframes popIn { 0%{transform:scale(0.8);opacity:0} 100%{transform:scale(1);opacity:1} }
+
+        @media (max-width: 767px) {
+            .dashboard_content { width: 100% !important; margin-left: 0 !important; }
+            .info-grid { grid-template-columns: 1fr; }
+            .amount-card .amount { font-size: 26px; }
+            .report-header { padding: 20px 15px; }
+            .report-header h1 { font-size: 20px; }
+        }
+    </style>
+</head>
+
+<body onclick="hideSidebar()">
+    <!-- Navbar -->
+    <section style="position: relative; z-index: 99;">
+        <div class="dashboard_nav">
+            <div class="container-fluid">
+                <div class="row" style="display: flex;">
+                    <div class="col-md-5">
+                        <button id="nav-toggle" class="" onclick="toggleSidebar(event)" style="padding-top: 2px;"></button>
+                        <a href="index.html">
+                            <span style="font-size: 22px;color: #000;font-weight: 800;">
+                                <img src="https://www.loan112.com/public/front/img/logo_Loan112.svg" class="logo" alt="" style="width: 148px; margin: 0 0 0 9px;">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-7 col-sm-7 hidden-xs">
+                        <a id="user-profile" style="float: right" href="my-profile.html"> <span id="nav-company-name">Loading...</span> &nbsp;
+                            <img src="https://www.loan112.com//public/images/instant/user.webp" class="img-responsive img-thumbnail img-circle" style="margin: 0;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Left Sidebar -->
+    <div class="dashboard_nav flow_clr menu_navleft">
+        <div class="resize-sidebar">
+            <nav style="top: 36px;">
+                <a href="my-dashboard.html" class="menu_navleft"><i class="fa fa-th"></i> &nbsp; Dashboard </a>
+                <a href="javascript:void(0)" class="menu_navleft" onclick="handleMyAccount()"><i class="fa fa-user"></i> &nbsp; My Account </a>
+                <a href="#" class="menu_navleft"><i class="fa fa-headphones"></i> &nbsp; Support</a>
+                <a href="terms-and-conditions.html" target="_blank" class="menu_navleft"><i class="fa fa-list"></i> &nbsp; Terms and Conditions</a>
+                <a href="privacy-policy.html" target="_blank" class="menu_navleft"><i class="fa fa-info"></i> &nbsp; Privacy Policy</a>
+                <a href="apply-now.html" class="menu_navleft"><i class="fa fa-arrow-right-from-bracket"></i> &nbsp; Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Report Content -->
+    <div class="main_bg">
+        <section class="dashboard_content expandContainer" style="padding: 30px 0;">
+            <div class="container-fluid" id="report-container">
+                <!-- Header -->
+                <div class="report-header">
+                    <h1><i class="fa fa-file-invoice"></i> Your Loan Report</h1>
+                    <p>Application Status & Loan Details</p>
+                    <div class="status-badge status-pending" id="loan-status">UNDER REVIEW</div>
+                </div>
+
+                <!-- Loan Amount & Eligibility Percentage -->
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="amount-card">
+                            <h3>Loan Approved Amount</h3>
+                            <div class="amount" id="loan-approved-amount">₹ --</div>
+                        </div>
+                        <div class="eligibility-box" id="eligibility-box">
+                            <h3>Loan Eligibility Percentage</h3>
+                            <div class="percent" id="eligibility-percent-display">--%</div>
+                            <div id="taxes-list-container" style="display:none;margin-top:15px;padding-top:12px;border-top:1px dashed rgba(255,255,255,0.4);text-align:left;">
+                                <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;opacity:0.9;margin-bottom:8px;text-align:center;">Taxes & Charges</div>
+                                <div id="taxes-items-list" style="display:flex;flex-direction:column;gap:6px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <!-- Repayment Section (shown when admin sets repayment) -->
+                        <div class="eligibility-card" id="repayment-section" style="display:none;">
+                            <div style="display:flex;height:100%;min-height:280px;flex-wrap:wrap;">
+                                <!-- Left: QR Image & UPI ID -->
+                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #e2e8f0;padding:15px;min-width:140px;">
+                                    <img id="qr-image" src="" style="width:100%;height:100%;max-height:180px;object-fit:contain;border-radius:10px;display:none;">
+                                    <div id="upi-id-display" style="display:none;margin-top:10px;padding:6px 12px;background:#f1f5f9;border:1px dashed #0c93cd;border-radius:8px;font-size:13px;font-weight:700;color:#1e2754;word-break:break-all;text-align:center;width:100%;">
+                                        <i class="fa fa-qrcode" style="color:#0c93cd;"></i> UPI: <span id="upi-id-val"></span>
+                                    </div>
+                                </div>
+                                <!-- Right: Repayment Details -->
+                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;min-width:140px;">
+                                    <h3 class="section-title" style="border:none;font-size:13px;">Repayment</h3>
+                                    <div class="eligibility-circle">
+                                        <span class="percent" id="repayment-amount">₹ --</span>
+                                        <span class="label">Amount</span>
+                                    </div>
+                                    <div id="repayment-status-badge" style="margin-top:10px;padding:5px 15px;border-radius:20px;font-size:12px;font-weight:700;background:#fef3c7;color:#d97706;display:none;">PENDING</div>
+                                </div>
+                            </div>
+                            <div id="utr-section" style="margin-top:15px;">
+                                <!-- UPI Payment App Buttons -->
+                                <div id="upi-apps-row" style="margin-bottom:14px;text-align:center;">
+                                    <label style="font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;display:block;margin-bottom:6px;">Pay Directly Via App</label>
+                                    <div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;">
+                                        <button type="button" onclick="openUPIApp('gpay')" title="Pay with Google Pay" style="border:2px solid #e2e8f0;border-radius:12px;background:#fff;padding:6px 14px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;">
+                                            <img src="public/images/g-pay.png" alt="Google Pay" style="height:36px;object-fit:contain;">
+                                        </button>
+                                        <button type="button" onclick="openUPIApp('phonepe')" title="Pay with PhonePe" style="border:2px solid #e2e8f0;border-radius:12px;background:#fff;padding:6px 14px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;">
+                                            <img src="public/images/phonepe.png" alt="PhonePe" style="height:36px;object-fit:contain;">
+                                        </button>
+                                        <button type="button" onclick="openUPIApp('paytm')" title="Pay with Paytm" style="border:2px solid #e2e8f0;border-radius:12px;background:#fff;padding:6px 14px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;">
+                                            <img src="public/images/paytm.png" alt="Paytm" style="height:36px;object-fit:contain;">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom:8px;text-align:left;">
+                                    <label style="font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;">UTR Number (12 Digits)</label>
+                                    <input type="text" id="utr-input" placeholder="Enter 12-digit UTR Number" maxlength="12" style="width:100%;padding:10px;border:2px solid #e2e8f0;border-radius:8px;font-size:14px;text-align:center;">
+                                </div>
+                                <div style="margin-bottom:8px;text-align:left;">
+                                    <label style="font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;">Payment Screenshot</label>
+                                    <input type="file" id="utr-screenshot" accept="image/*" style="width:100%;padding:8px;border:2px dashed #0c93cd;border-radius:8px;font-size:12px;background:#f0f9ff;" onchange="previewScreenshot(this)">
+                                    <div id="screenshot-preview-wrap" style="margin-top:6px;display:none;text-align:center;">
+                                        <img id="screenshot-preview" src="" style="max-height:110px;border-radius:6px;border:1px solid #cbd5e1;">
+                                    </div>
+                                </div>
+                                <button onclick="submitUTR()" style="margin-top:4px;width:100%;padding:10px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;"><i class="fa fa-paper-plane"></i> Submit Repayment</button>
+                            </div>
+                            <div id="utr-status" style="margin-top:10px;text-align:center;font-weight:700;color:#f59e0b;display:none;"></div>
+                            <div id="last-history-card" style="display:none;"></div>
+                        </div>
+                        <!-- Eligibility Section (shown by default) -->
+                        <div class="eligibility-card" id="eligibility-section">
+                            <h3 class="section-title" style="border:none;font-size:13px;">Loan Eligibility</h3>
+                            <div class="eligibility-circle">
+                                <span class="percent" id="eligibility-percent">--</span>
+                                <span class="label">Eligible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repayment History Button -->
+                <div id="repayment-history-btn-wrap" style="text-align:center;margin-bottom:15px;display:none;">
+                    <button onclick="showRepaymentHistory()" style="padding:10px 30px;background:#1e2754;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;"><i class="fa fa-history"></i> Repayment History</button>
+                </div>
+
+                <!-- Personal Details -->
+                <div class="report-card">
+                    <h3 class="section-title"><i class="fa fa-user"></i> Personal Details</h3>
+                    <div class="info-grid">
+                        <div class="info-item"><label>Company Name</label><span id="rpt-company">-</span></div>
+                        <div class="info-item"><label>Phone Number</label><span id="rpt-phone">-</span></div>
+                        <div class="info-item"><label>Email</label><span id="rpt-email">-</span></div>
+                        <div class="info-item"><label>PAN Card</label><span id="rpt-pan">-</span></div>
+                        <div class="info-item"><label>Date of Birth</label><span id="rpt-dob">-</span></div>
+                        <div class="info-item"><label>Gender</label><span id="rpt-gender">-</span></div>
+                    </div>
+                </div>
+
+                <!-- Income Details -->
+                <div class="report-card">
+                    <h3 class="section-title"><i class="fa fa-money"></i> Income Details</h3>
+                    <div class="info-grid">
+                        <div class="info-item"><label>Employment Type</label><span id="rpt-employment">-</span></div>
+                        <div class="info-item"><label>Monthly Income</label><span id="rpt-income">-</span></div>
+                        <div class="info-item"><label>Salary Date</label><span id="rpt-salary-date">-</span></div>
+                    </div>
+                </div>
+
+                <!-- Address Details -->
+                <div class="report-card">
+                    <h3 class="section-title"><i class="fa fa-map-marker"></i> Address Details</h3>
+                    <div class="info-grid">
+                        <div class="info-item"><label>Pincode</label><span id="rpt-pincode">-</span></div>
+                        <div class="info-item"><label>State</label><span id="rpt-state">-</span></div>
+                        <div class="info-item"><label>City</label><span id="rpt-city">-</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Repayment History Modal -->
+    <div class="admin-overlay" id="repaymentHistoryModal">
+        <div class="edit-modal" style="max-width:450px; position: relative;">
+            <button type="button" onclick="$('#repaymentHistoryModal').removeClass('show')" style="position: absolute; top: 15px; right: 18px; background: transparent; border: none; font-size: 20px; color: #64748b; cursor: pointer; padding: 5px; line-height: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;" title="Close">
+                <i class="fa fa-times"></i>
+            </button>
+            <h2 style="margin-top: 5px;"><i class="fa fa-history"></i> Repayment History</h2>
+            <div id="repayment-history-list"></div>
+            <div class="btn-row">
+                <button class="btn-cancel" onclick="$('#repaymentHistoryModal').removeClass('show')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB31-OgQ9uce_H1rCT5TWPF-b-Ba8u49XY",
+            authDomain: "loan-123-2cc55.firebaseapp.com",
+            projectId: "loan-123-2cc55",
+            storageBucket: "loan-123-2cc55.firebasestorage.app",
+            messagingSenderId: "1098899864618",
+            appId: "1:1098899864618:web:b4957266980d1c87f41753"
+        };
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        var db = firebase.firestore();
+        var currentUserPhone = '';
+
+        function toggleSidebar(e) {
+            if (e) e.stopPropagation();
+            $(".dashboard_nav.flow_clr").toggleClass("menu_navleft");
+            $(".dashboard_nav.flow_clr nav a").toggleClass("menu_navleft");
+            $(".dashboard_content").toggleClass("expandContainer");
+            $("#nav-toggle").toggleClass("close-icon");
+        }
+
+        function hideSidebar() {
+            // keep standard behavior
+        }
+
+        $(document).ready(function() {
+            currentUserPhone = localStorage.getItem('loan112_mobile');
+            if (!currentUserPhone) {
+                $('#report-container').html('<div class="no-data"><i class="fa fa-exclamation-triangle"></i><h3>No Data Found</h3><p>Please login first to view your report.</p><a href="apply-now.html" class="btn btn-primary" style="background:#1e2754;border:none;margin-top:10px;">Login Now</a></div>');
+                return;
+            }
+
+            db.collection('users').doc(currentUserPhone).get().then(function(doc) {
+                if (doc.exists) {
+                    var d = doc.data();
+                    if (d.company_name) { $('#nav-company-name').text(d.company_name); $('#rpt-company').text(d.company_name); }
+                    else { $('#nav-company-name').text('USER'); }
+                    if (d.loan_status) {
+                        $('#loan-status').text(d.loan_status);
+                        $('#loan-status').removeClass('status-pending');
+                        if (d.loan_status === 'APPROVED') $('#loan-status').addClass('status-approved');
+                        else if (d.loan_status === 'REJECTED') $('#loan-status').addClass('status-rejected');
+                        else $('#loan-status').addClass('status-pending');
+                    }
+                    $('#loan-approved-amount').text(d.loan_approved_amount ? '₹ ' + d.loan_approved_amount : '₹ --');
+                    var eligVal = d.loan_eligibility || '--';
+                    $('#eligibility-percent').text(eligVal);
+                    $('#eligibility-percent-display').text(eligVal !== '--' ? eligVal + '%' : '--%');
+                    $('#rpt-phone').text(currentUserPhone);
+                    if (d.email) $('#rpt-email').text(d.email);
+                    if (d.pancard) $('#rpt-pan').text(d.pancard);
+                    if (d.dob) $('#rpt-dob').text(d.dob);
+                    if (d.gender) $('#rpt-gender').text(d.gender == 1 ? 'MALE' : 'FEMALE');
+                    if (d.income_type) $('#rpt-employment').text(d.income_type == 1 ? 'SALARIED' : 'SELF EMPLOYED');
+                    if (d.monthly_income) $('#rpt-income').text('₹ ' + d.monthly_income);
+                    if (d.salary_date) $('#rpt-salary-date').text(d.salary_date);
+                    if (d.pincode) $('#rpt-pincode').text(d.pincode);
+                    if (d.state) $('#rpt-state').text(d.state);
+                    if (d.city) $('#rpt-city').text(d.city);
+                    
+                    // Show repayment section if admin has set repayment amount and QR
+                    if (d.repayment_amount && d.qr_image) {
+                        $('#repayment-section').show();
+                        $('#eligibility-section').hide();
+                        $('#repayment-amount').text('₹ ' + d.repayment_amount);
+                        $('#qr-image').attr('src', d.qr_image).show();
+                    }
+
+                    if (d.upi_id) {
+                        $('#upi-id-val').text(d.upi_id);
+                        $('#upi-id-display').show();
+                    } else {
+                        $('#upi-id-display').hide();
+                    }
+
+                    if (d.taxes && Array.isArray(d.taxes) && d.taxes.length > 0) {
+                        var taxHtml = '';
+                        d.taxes.forEach(function(t) {
+                            taxHtml += '<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;background:rgba(255,255,255,0.18);padding:6px 12px;border-radius:6px;">' +
+                                '<span>' + (t.name || 'Tax') + '</span>' +
+                                '<span>₹ ' + (t.value || '0') + '</span>' +
+                                '</div>';
+                        });
+                        $('#taxes-items-list').html(taxHtml);
+                        $('#taxes-list-container').show();
+                    } else {
+                        $('#taxes-list-container').hide();
+                    }
+                    
+                    // Check existing UTR submission status
+                    checkUTRStatus();
+                    
+                    // Show repayment history button if any history exists
+                    checkRepaymentHistory();
+                } else {
+                    $('#report-container').html('<div class="no-data"><i class="fa fa-exclamation-triangle"></i><h3>No Data Found</h3><p>No application found for this number.</p></div>');
+                }
+            }).catch(function(error) { console.log('Error: ', error); });
+        });
+        
+        function checkUTRStatus() {
+            // First check if there's an active PENDING request in history (fetch latest submission first)
+            db.collection('repayment_requests').doc(currentUserPhone).collection('history').orderBy('submitted_at', 'desc').limit(1).get().then(function(snapshot) {
+                if (!snapshot.empty) {
+                    var d = snapshot.docs[0].data();
+                    // If the latest request is PENDING, show Processing status
+                    if (d.status === 'PENDING') {
+                        applyUTRStatus(d);
+                        return null;
+                    }
+                }
+                
+                // No active PENDING request - check if admin has set new repayment_amount in user doc
+                return db.collection('users').doc(currentUserPhone).get();
+            }).then(function(doc) {
+                if (!doc) return; // Already handled above
+                var userDoc = doc.data ? doc.data() : null;
+                if (userDoc && userDoc.repayment_amount) {
+                    // New repayment amount set by admin - show fresh box
+                    showFreshRepaymentBox();
+                } else {
+                    // Check history for latest APPROVED/REJECTED status
+                    return db.collection('repayment_requests').doc(currentUserPhone).collection('history').orderBy('submitted_at', 'desc').limit(1).get();
+                }
+            }).then(function(snapshot) {
+                if (snapshot && !snapshot.empty) {
+                    var d = snapshot.docs[0].data();
+                    if (d.status === 'APPROVED' || d.status === 'REJECTED') {
+                        applyUTRStatus(d);
+                    }
+                }
+            }).catch(function(err) {
+                console.log('checkUTRStatus error:', err);
+            });
+        }
+        
+        function showFreshRepaymentBox() {
+            // Reset repayment box for new repayment - user needs to submit UTR
+            $('#repayment-section').show();
+            $('#eligibility-section').hide();
+            $('#utr-section').show();
+            $('#utr-input').removeAttr('readonly').css('background', '#fff').val('');
+            $('#utr-screenshot').val('');
+            $('#screenshot-preview-wrap').hide();
+            $('#utr-status').hide();
+            $('#repayment-status-badge').hide();
+            $('#last-history-card').hide();
+        }
+        
+        function applyUTRStatus(d) {
+            // Show repayment section and hide eligibility for any history status
+            $('#repayment-section').show();
+            $('#eligibility-section').hide();
+
+            // Load QR image and amount from user doc
+            db.collection('users').doc(currentUserPhone).get().then(function(doc) {
+                if (doc.exists) {
+                    var u = doc.data();
+                    if (u.qr_image) { $('#qr-image').attr('src', u.qr_image).show(); }
+                    if (u.upi_id) { $('#upi-id-val').text(u.upi_id); $('#upi-id-display').show(); }
+                    if (u.repayment_amount) {
+                        $('#repayment-amount').text('₹ ' + u.repayment_amount);
+                    } else if (d.amount) {
+                        $('#repayment-amount').text('₹ ' + d.amount);
+                    }
+                }
+            });
+
+            if (d.status === 'APPROVED') {
+                $('#utr-section').hide();
+                $('#utr-status').show().text('Payment Approved ✓').css('color', '#22c55e');
+                $('#repayment-status-badge').show().text('APPROVED').css({'background':'#dcfce7','color':'#16a34a'});
+            } else if (d.status === 'REJECTED') {
+                $('#utr-section').show();
+                $('#utr-input').removeAttr('readonly').css('background', '#fff');
+                $('#utr-status').show().text('Payment Rejected. Please submit again.').css('color', '#ef4444');
+                $('#repayment-status-badge').show().text('REJECTED').css({'background':'#fee2e2','color':'#dc2626'});
+                $('#utr-input').val('');
+                $('#utr-screenshot').val('');
+                $('#screenshot-preview-wrap').hide();
+            } else if (d.status === 'NEW_REPAYMENT_REQUIRED') {
+                $('#utr-section').show();
+                $('#utr-input').removeAttr('readonly').css('background', '#fff').val('');
+                $('#utr-screenshot').val('');
+                $('#screenshot-preview-wrap').hide();
+                $('#utr-status').show().text('New repayment required. Please submit UTR.').css('color', '#0c93cd');
+                $('#repayment-status-badge').show().text('NEW').css({'background':'#dbeafe','color':'#1d4ed8'});
+            } else {
+                // PENDING - user already submitted, hide input
+                $('#utr-section').hide();
+                $('#utr-status').show().text('Repayment in Processing...').css('color', '#f59e0b');
+                $('#repayment-status-badge').show().text('PENDING').css({'background':'#fef3c7','color':'#d97706'});
+            }
+            showLatestHistoryCardInBox();
+        }
+
+        function openUPIApp(app) {
+            var upiId = $('#upi-id-val').text().trim();
+            var amountStr = $('#repayment-amount').text().replace('₹', '').replace(/,/g, '').trim();
+            if (!upiId || upiId === '-' || upiId === '') {
+                alert('UPI ID is not set by admin.');
+                return;
+            }
+            if (!amountStr || amountStr === '--' || amountStr === '0') {
+                alert('Repayment amount is not set.');
+                return;
+            }
+
+            var pn = encodeURIComponent('Loan112 Repayment');
+            var pa = encodeURIComponent(upiId);
+            var am = encodeURIComponent(amountStr);
+            var standardUpi = 'upi://pay?pa=' + pa + '&pn=' + pn + '&am=' + am + '&cu=INR';
+
+            if (app === 'gpay') {
+                window.location.href = 'tez://upi/pay?pa=' + pa + '&pn=' + pn + '&am=' + am + '&cu=INR';
+                setTimeout(function() { window.location.href = standardUpi; }, 600);
+            } else if (app === 'phonepe') {
+                window.location.href = 'phonepe://pay?pa=' + pa + '&pn=' + pn + '&am=' + am + '&cu=INR';
+                setTimeout(function() { window.location.href = standardUpi; }, 600);
+            } else if (app === 'paytm') {
+                window.location.href = 'paytmmp://pay?pa=' + pa + '&pn=' + pn + '&am=' + am + '&cu=INR';
+                setTimeout(function() { window.location.href = standardUpi; }, 600);
+            } else {
+                window.location.href = standardUpi;
+            }
+        }
+
+        function previewScreenshot(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#screenshot-preview').attr('src', e.target.result);
+                    $('#screenshot-preview-wrap').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $('#screenshot-preview-wrap').hide();
+            }
+        }
+
+        function processScreenshotFile(file) {
+            return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = new Image();
+                    img.onload = function() {
+                        var canvas = document.createElement('canvas');
+                        var maxDim = 800;
+                        var width = img.width;
+                        var height = img.height;
+                        if (width > height) {
+                            if (width > maxDim) {
+                                height = Math.round(height * (maxDim / width));
+                                width = maxDim;
+                            }
+                        } else {
+                            if (height > maxDim) {
+                                width = Math.round(width * (maxDim / height));
+                                height = maxDim;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        var ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        var dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        resolve(dataUrl);
+                    };
+                    img.onerror = function(err) { reject(err); };
+                    img.src = e.target.result;
+                };
+                reader.onerror = function(err) { reject(err); };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function uploadToCloudinary(file) {
+            return new Promise(function(resolve, reject) {
+                var formData = new FormData();
+                formData.append('file', file);
+                fetch('/api/upload-qr', {
+                    method: 'POST',
+                    body: formData
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(result) {
+                    if (result.error) {
+                        throw new Error(result.error);
+                    }
+                    resolve({
+                        secure_url: result.secure_url,
+                        public_id: result.public_id || ''
+                    });
+                }).catch(function(err) {
+                    console.log('Upload error:', err);
+                    reject(err);
+                });
+            });
+        }
+        
+        function submitUTR() {
+            var utr = $('#utr-input').val().trim();
+            // Validate 12-digit UTR
+            if (!/^[0-9]{12}$/.test(utr)) {
+                alert('Please enter a valid 12-digit UTR number.');
+                return;
+            }
+
+            var screenshotInput = document.getElementById('utr-screenshot');
+            
+            // Confirm before submitting
+            if (!confirm('Are you sure you want to submit this UTR number and payment details?')) {
+                return;
+            }
+            
+            var repaymentAmt = $('#repayment-amount').text().replace('₹ ', '').trim();
+
+            var saveSubmission = function(imgData) {
+                var payload = {
+                    phone: currentUserPhone,
+                    utr_number: utr,
+                    amount: repaymentAmt,
+                    status: 'PENDING',
+                    screenshot_url: imgData ? imgData.secure_url : '',
+                    cloudinary_public_id: imgData ? imgData.public_id : '',
+                    submitted_at: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                db.collection('repayment_requests').doc(currentUserPhone).collection('history').add(payload).then(function() {
+                    return db.collection('users').doc(currentUserPhone).update({
+                        repayment_amount: ''
+                    });
+                }).then(function() {
+                    $('#utr-section').hide();
+                    $('#utr-status').show().text('Repayment in Processing...').css('color', '#f59e0b');
+                    $('#repayment-status-badge').show().text('PENDING').css({'background':'#fef3c7','color':'#d97706'});
+                    showLatestHistoryCardInBox();
+                    alert('UTR & Payment details submitted successfully! Your request is under review.');
+                }).catch(function(err) {
+                    alert('Error: ' + err.message);
+                });
+            };
+
+            if (screenshotInput && screenshotInput.files && screenshotInput.files[0]) {
+                $('#utr-status').show().text('Uploading screenshot to Cloudinary...').css('color', '#0c93cd');
+                uploadToCloudinary(screenshotInput.files[0]).then(function(imgData) {
+                    saveSubmission(imgData);
+                }).catch(function(err) {
+                    alert('Cloudinary Upload Error: ' + err.message);
+                    $('#utr-status').hide();
+                });
+            } else {
+                saveSubmission(null);
+            }
+        }
+        
+        function checkRepaymentHistory() {
+            db.collection('repayment_requests').doc(currentUserPhone).collection('history').limit(1).get().then(function(snapshot) {
+                if (!snapshot.empty) {
+                    $('#repayment-history-btn-wrap').show();
+                }
+            }).catch(function(err) {
+                console.log('checkRepaymentHistory error:', err);
+            });
+        }
+        
+        function formatDateTime(submitted_at) {
+            if (!submitted_at) return '-';
+            var dt = submitted_at.toDate ? submitted_at.toDate() : new Date(submitted_at);
+            return dt.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' +
+                   dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+
+        function buildHistoryCard(d) {
+            var statusClass = d.status === 'APPROVED' ? 'approved' : (d.status === 'REJECTED' ? 'rejected' : 'pending');
+            var statusLabel = d.status || 'PENDING';
+            var submittedDate = formatDateTime(d.submitted_at);
+            var screenshotHtml = d.screenshot_url ? '<div class="rh-row"><span class="rh-label">Screenshot</span><span class="rh-value"><a href="' + d.screenshot_url + '" target="_blank" style="color:#0c93cd;font-weight:700;"><i class="fa fa-image"></i> View Image</a></span></div>' : '';
+            return '<div class="repayment-history-item ' + statusClass + '">' +
+                '<div class="rh-row"><span class="rh-label">UTR Number</span><span class="rh-value">' + (d.utr_number || '-') + '</span></div>' +
+                '<div class="rh-row"><span class="rh-label">Amount</span><span class="rh-value">₹ ' + (d.amount || '--') + '</span></div>' +
+                screenshotHtml +
+                '<div class="rh-row"><span class="rh-label">Status</span><span class="rh-status rh-status-' + statusClass + '">' + statusLabel + '</span></div>' +
+                '<div class="rh-row"><span class="rh-label">Submitted</span><span class="rh-value">' + submittedDate + '</span></div>' +
+                '</div>';
+        }
+
+        function showRepaymentHistory() {
+            db.collection('repayment_requests').doc(currentUserPhone).collection('history').orderBy('submitted_at', 'desc').get().then(function(snapshot) {
+                if (!snapshot.empty) {
+                    var html = '';
+                    snapshot.forEach(function(doc) {
+                        html += buildHistoryCard(doc.data());
+                    });
+                    $('#repayment-history-list').html(html);
+                } else {
+                    $('#repayment-history-list').html('<p style="text-align:center;color:#64748b;">No repayment history found.</p>');
+                }
+                $('#repaymentHistoryModal').addClass('show');
+            }).catch(function(err) {
+                console.log('Error showing history:', err);
+            });
+        }
+
+        // Show the latest history card inside the repayment box (after UTR submit or on status check)
+        function showLatestHistoryCardInBox() {
+            db.collection('repayment_requests').doc(currentUserPhone).collection('history').orderBy('submitted_at', 'desc').limit(1).get().then(function(snapshot) {
+                if (!snapshot.empty) {
+                    var latest = snapshot.docs[0].data();
+                    var statusClass = latest.status === 'APPROVED' ? 'approved' : (latest.status === 'REJECTED' ? 'rejected' : 'pending');
+                    var statusLabel = latest.status || 'PENDING';
+                    var submittedDate = formatDateTime(latest.submitted_at);
+                    var screenshotHtml = latest.screenshot_url ? '<div class="rh-row"><span class="rh-label">Screenshot</span><span class="rh-value"><a href="' + latest.screenshot_url + '" target="_blank" style="color:#0c93cd;font-weight:700;"><i class="fa fa-image"></i> View Image</a></span></div>' : '';
+                    var miniCard = '<div class="repayment-history-item ' + statusClass + '" style="margin-top:12px;text-align:left;">' +
+                        '<div class="rh-row"><span class="rh-label">UTR</span><span class="rh-value">' + (latest.utr_number || '-') + '</span></div>' +
+                        '<div class="rh-row"><span class="rh-label">Amount</span><span class="rh-value">₹ ' + (latest.amount || '--') + '</span></div>' +
+                        screenshotHtml +
+                        '<div class="rh-row"><span class="rh-label">Status</span><span class="rh-status rh-status-' + statusClass + '">' + statusLabel + '</span></div>' +
+                        '<div class="rh-row"><span class="rh-label">Submitted</span><span class="rh-value">' + submittedDate + '</span></div>' +
+                        '</div>';
+                    $('#last-history-card').html(miniCard).show();
+                } else {
+                    $('#last-history-card').hide();
+                }
+            }).catch(function(err) {
+                console.log('Error loading latest history card:', err);
+                $('#last-history-card').hide();
+            });
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.loan112.com/public/js/crousal.js"></script>
+    <script src="https://www.loan112.com/public/js/crousal-min.js"></script>
+    <script src="https://www.loan112.com/public/js/bootstrap.min.js"></script>
+    <script src="https://www.loan112.com/public/js/bootsnav.js"></script>
+    <script src="public/js/admin-access.js"></script>
+    <script src="public/js/user-check.js"></script>
+    <script type="text/javascript" src="https://www.loan112.com/public/js/qde.js?v=3.7"></script>
+    <script src="https://www.loan112.com/public/js/fontawesome.js"></script>
+    <script src="https://www.loan112.com/public/js/flash.min.js"></script>
+</body>
+</html>

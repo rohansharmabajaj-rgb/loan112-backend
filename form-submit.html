@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="text/css" href="https://www.loan112.com/public/loan112/favicon.png">
+    <link rel="canonical" href="form-submit.html" />
+    <title>Form Submitted | Loan112</title>
+    <link href="https://www.loan112.com/public/css/bootstrap.min.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/animate.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/my-css.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/bootsnav.css?v=3.8" rel="stylesheet">
+    <link href="https://www.loan112.com/public/css/style.css?v=3.8" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: 'Manrope', sans-serif !important; }
+        .success-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        .success-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 60px 80px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: popIn 0.5s ease;
+            max-width: 500px;
+            width: 100%;
+        }
+        .success-box .tick-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            animation: scaleUp 0.6s ease 0.2s both;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+        .success-box .tick-circle svg {
+            width: 60px;
+            height: 60px;
+        }
+        .success-box .tick-circle .tick-path {
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: drawTick 0.5s ease 0.8s forwards;
+        }
+        .success-box h2 {
+            color: #1e2754;
+            font-size: 28px;
+            margin: 10px 0 10px;
+            font-weight: 800;
+        }
+        .success-box p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .success-box .redirect-text {
+            color: #0c93cd;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .success-box .countdown {
+            color: #1e2754;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes scaleUp {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        @keyframes drawTick {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .success-box { animation: popIn 0.5s ease, pulse 2s ease 1.5s infinite; }
+    </style>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WLMTSFMX');</script>
+</head>
+
+<body onclick="hideSidebar()">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMTSFMX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navbar -->
+    <section style="position: relative; z-index: 99;">
+        <div class="dashboard_nav">
+            <div class="container-fluid">
+                <div class="row" style="display: flex;">
+                    <div class="col-md-5">
+                        <button id="nav-toggle" class="" onclick="toggleSidebar()" style="padding-top: 2px;"></button>
+                        <a href="index.html">
+                            <span style="font-size: 22px;color: #000;font-weight: 800;">
+                                <img src="https://www.loan112.com/public/front/img/logo_Loan112.svg" class="logo" alt="" style="width: 148px; margin: 0 0 0 9px;">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-7 col-sm-7 hidden-xs">
+                        <a id="user-profile" style="float: right" href="my-profile.html"> <span id="nav-company-name">Loading...</span> &nbsp;
+                            <img src="https://www.loan112.com//public/images/instant/user.webp" class="img-responsive img-thumbnail img-circle" style="margin: 0;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Left Sidebar -->
+    <div class="dashboard_nav flow_clr menu_navleft">
+        <div class="resize-sidebar">
+            <nav style="top: 36px;">
+                <a href="my-dashboard.html" class="menu_navleft"><i class="fa fa-th"></i> &nbsp; Dashboard </a>
+                <a href="my-profile.html" class="menu_navleft"><i class="fa fa-user"></i> &nbsp; My Account </a>
+                <a href="#" class="menu_navleft"><i class="fa fa-headphones"></i> &nbsp; Support</a>
+                <a href="terms-and-conditions.html" target="_blank" class="menu_navleft"><i class="fa fa-list"></i> &nbsp; Terms and Conditions</a>
+                <a href="privacy-policy.html" target="_blank" class="menu_navleft"><i class="fa fa-info"></i> &nbsp; Privacy Policy</a>
+                <a href="apply-now.html" class="menu_navleft"><i class="fa fa-arrow-right-from-bracket"></i> &nbsp; Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Success Content -->
+    <div class="main_bg">
+        <section class="dashboard_content expandContainer" style="padding: 5% 0;">
+            <div class="container">
+                <div class="success-container">
+                    <div class="success-box">
+                        <div class="tick-circle">
+                            <svg viewBox="0 0 24 24">
+                                <path class="tick-path" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h2>You Submitted Successfully!</h2>
+                        <p>Your application has been received. We will review it shortly.</p>
+                        <div class="countdown" id="countdown">3</div>
+                        <p class="redirect-text">Redirecting to your report...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB31-OgQ9uce_H1rCT5TWPF-b-Ba8u49XY",
+            authDomain: "loan-123-2cc55.firebaseapp.com",
+            projectId: "loan-123-2cc55",
+            storageBucket: "loan-123-2cc55.firebasestorage.app",
+            messagingSenderId: "1098899864618",
+            appId: "1:1098899864618:web:b4957266980d1c87f41753"
+        };
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        var db = firebase.firestore();
+        $(document).ready(function() {
+            var phone = localStorage.getItem('loan112_mobile');
+            if (phone) {
+                db.collection('users').doc(phone).get().then(function(doc) {
+                    if (doc.exists && doc.data().company_name) {
+                        $('#nav-company-name').text(doc.data().company_name);
+                    } else {
+                        $('#nav-company-name').text('USER');
+                    }
+                }).catch(function() {
+                    $('#nav-company-name').text('USER');
+                });
+            } else {
+                $('#nav-company-name').text('USER');
+            }
+        });
+    </script>
+    <script>
+        var seconds = 3;
+        var countdownEl = document.getElementById('countdown');
+        var timer = setInterval(function() {
+            seconds--;
+            countdownEl.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = 'user-report.html';
+            }
+        }, 1000);
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.loan112.com/public/js/bootsnav.js"></script>
+<script src="public/js/admin-access.js"></script>
+</body>
+</html>
